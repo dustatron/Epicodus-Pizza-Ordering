@@ -23,7 +23,7 @@ h4 {
 
 .pick-size {
 	text-align: center;
-	display: none;
+	/* display: none; */
 }
 
 .pie {
@@ -176,7 +176,9 @@ h4 {
 /* ========================================= */
 /* -------------  Finish Order  ---------- */
 /* ======================================= */
-
+.order {
+	display: none;
+}
 .order-done {
 	display: flex;
 	justify-content: center;
