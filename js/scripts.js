@@ -32,8 +32,12 @@ Cart.prototype.makePizzaId = function() {
 	return pizzeria.pizzaId;
 };
 
-Cart.prototype.addPizza = function(pizza) {
-	pizza.pizzaId = this.makePizzaId();
+Cart.prototype.addPizza = function(size, toppings) {
+	pizza = {
+		size: size, // should me int
+		toppings: toppings, // should be array
+		pizzaId: (pizzeria.pizzaId += 1)
+	};
 	this.items.push(pizza);
 };
 
