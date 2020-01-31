@@ -149,6 +149,35 @@ function writeTotal(obj) {
 	$('#totalNumber').text(totalObj.total);
 }
 
+function writePizzaOrders(thisOrder) {
+	var printArray = [];
+	var order = pizzeria.orders[thisOrder];
+	x;
+	order.items.forEach((item) => {
+		var toppings;
+		if (item.toppings.length <= 1) {
+			toppings = ' Topping </p>';
+		} else {
+			toppings = ' Toppings </p>';
+		}
+		printArray.push(
+			'<div class="pizza-order">' +
+				'<img src="img/pizza-1.png">' +
+				'<p> One' +
+				' ' +
+				item.size +
+				' ' +
+				'Pizza With  ' +
+				item.toppings.length +
+				toppings +
+				'</div>'
+		);
+		console.log(item);
+	});
+
+	$('.show-pizzas-here').html(printArray.join(''));
+}
+
 ////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
@@ -185,7 +214,7 @@ $(document).ready(function() {
 	$('#buy-this-pizza').click(() => {
 		$('.toppings').hide();
 		$('.finish-order').show();
-
+		writePizzaOrders(that.currentOrder);
 		writeTotal(that.currentOrder);
 	});
 
