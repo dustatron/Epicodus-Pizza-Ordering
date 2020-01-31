@@ -1,20 +1,14 @@
-# _Boilerplate Website_
+# _Pizza Ordering App_
 
-#### _This site comes with the all basic parts to get you started making a single page website fast. | Jan 24. 2020_
+#### _A simple web app that allows a user to build a pizza and order it. | Jan 31. 2020_
 
 #### By _**Dusty McCord**_
-[link to demo site](https://dustatron.github.io/boilerplate-simple-website/)
+[link to demo site coming soon](#)
 
 ## Description
 
-_This boilerplate site has one index.html file that is already linked to the included bootstrap.css(4.4), styles.css, jQuery.js(3.4.1), and scripts.js._
+This project was created for the 4th week Epicodus independent project. Its goal is to allow a user to choose a pizza size and add their favorite toppings and then place an order. This project is build using constructor functions and methods on those constructors to build functionality.
 
-
-There is a pre-built two input form with a submit button. There is also a simple jQuery function that will console.log when the submit button is clicked.
-
-The .gitignore file is a template for mac osx but a link is provided to get a template for any operating system. 
-
-[create a .gitignore template for your os here](https://www.gitignore.io/)
 
 ## Setup/Installation Requirements
 
@@ -36,7 +30,7 @@ cd desktop
  3. in terminal type '_git clone {link to repository}_ '
 
 ```sh
-git clone https://github.com/dustatron/boilerplate-simple-website.git
+git clone [link here]
 ```
 
 4. navigate to the new folder that was created on your desk
@@ -50,13 +44,18 @@ git clone https://github.com/dustatron/boilerplate-simple-website.git
 ### Behavior Driven Development Spec List
 
 Behavoir | Input | Output
-:---------:|:------:|:------:
-The program takes in input and console.log a 'click' | 'any word' | 'click'
-The program takes in any words and console logs the output | 'learning to code' | 'learning to code'
+:-------|:-----:|:------:
+The program will allow a user to select between three pizza sizes | click on medium | you have selected medium
+The program well show a list of toppings (cheese, pepperoni, artichoke, anchovy, etc) and allow the user to select them | click on anchovy | anchovy has been added to your pizza
+The program will allow a user to finish the order by clicking on a button | click 'Done' button | show final pizza order.
+The program will allow a user to add another pizza | click add | Show pizza size options
+When the order is done the program will show cost of pizza or pizza's | click finish ordering | show price
+From the final order view the program will display a list of pizzas in the order and links that to those pizza's details | click on pizza | that pizzas size and toppings
+From the final view the program will allow a user to add delivery to the order | click delivery | delivery fee added to total
 
 ## Support 
 
-_The software is provided as is. It might work as expected - or not. Just don't blame me._
+_This software is provided as is. It might work as expected - or not. You can contact me through github if you want help._
 
 
 ## Built With
