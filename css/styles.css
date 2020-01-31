@@ -124,6 +124,7 @@ h4 {
 /* ======================================= */
 
 .finish-order {
+	display: none;
 }
 
 /* ---------------- LEFT --------------- */
@@ -131,11 +132,60 @@ h4 {
 }
 
 /* -------------------- RIGHT -------------- */
+.btn-warning {
+	margin: 0 36%;
+}
 .finish-order--total {
+}
+.finish-order--total-box {
+	width: 50%;
+	height: auto;
+	margin: 25px auto;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid black;
+
+	font-weight: 700;
+}
+.t-box-top {
+	margin-bottom: 30px;
+	text-transform: uppercase;
+	border-bottom: 1px dashed black;
+}
+.t-box-mid {
+	height: 180px;
+}
+
+.t-box-amount-pizza {
 }
 
 .finish-order--total-box {
 }
 
+.t-box-amount-toppings {
+}
+
+.t-box-delivery {
+}
+
 .t-box-total {
+	text-align: center;
+	font-size: 21px;
+}
+
+/* ========================================= */
+/* -------------  Finish Order  ---------- */
+/* ======================================= */
+
+.order-done {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	height: 70vh;
+}
+
+.order-done-box {
+	text-align: center;
+	border: 1px solid red;
+	padding: 50px;
 }

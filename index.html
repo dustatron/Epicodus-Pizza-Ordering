@@ -128,15 +128,39 @@
       <!-- right  -->
       <div class="col-md-6 finish-order--total">
         <h4>Your Pizza Total</h4>
+        <button class="btn btn-warning btn-lg text-center">Add Delivery</button>
         <div class="finish-order--total-box">
-          <div class="t-box-total">
-            Total : $20
+          <div class="t-box-top">
+            Review Your order
+          </div>
+          <div class="t-box-mid">
+            <div class="t-box-amount-pizzas">
+              number of Pizzas: <span id="pizzaNumber">1</span>
+            </div>
+            <div class="t-box-amount-toppings">
+              number of toppings: <span id="toppingsNumber">1</span>
+            </div>
+            <div class="t-box-delivery">
+              Delivery yes : <span id="deliveryNumber">5</span>
+            </div>
+          </div>
+          <div class="t-box-bottom">
+            <div class="t-box-total">
+              Total : <span id="totalNumber">$20</span>
+            </div>
+
+            <button class="btn btn-success btn-lg btn-block">Complete Order</button>
           </div>
         </div>
-        <button class="btn btn-success btn-lg btn-block">Complete Order</button>
       </div>
     </div>
     <!-- Select Completed Order -->
+    <div class="row order-done">
+      <div class="order-done-box">
+        <h4>You have ordered your pizza.</h4>
+      </div>
+
+    </div>
 
   </div> <!-- end container-->
 </body>
