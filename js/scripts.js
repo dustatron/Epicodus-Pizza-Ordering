@@ -93,13 +93,10 @@ Cart.prototype.addPizzaTopping = function(pizzaId, topping) {
 	console.log('added ' + topping);
 };
 
-Cart.prototype.toDeliver = function(option) {
-	this.toDeliver = option;
-};
-
 ////////////////////////////////////////
 //////// Start Pizzeria Object ////////
 var pizzeria = new Pizzeria();
+var cart = new Cart();
 
 //////////////////////////////////
 //////// Draw Functions  ////////
@@ -152,7 +149,6 @@ function writeTotal(obj) {
 function writePizzaOrders(thisOrder) {
 	var printArray = [];
 	var order = pizzeria.orders[thisOrder];
-	x;
 	order.items.forEach((item) => {
 		var toppings;
 		if (item.toppings.length <= 1) {
@@ -188,8 +184,6 @@ $(document).ready(function() {
 
 	//Pizza size Listen
 	$('.pick-size--pizzas').on('click', 'div', function(event) {
-		console.log(this.id);
-		var cart = new Cart();
 		cart.addPizza(this.id, { name: 'cheese', img: 'img/cheese.png' });
 		pizzeria.addToCart(cart);
 
@@ -197,7 +191,7 @@ $(document).ready(function() {
 		var curPie = pizzeria.orders[that.currentOrder].items[that.currentPizza];
 		$('.pick-size').hide();
 		$('.toppings').show();
-		$('.toppings').attr('id', curPie.id);
+		// $('.toppings').attr('id', curPie.id);
 		$('.toppings--pizza-title').text(curPie.size);
 		drawToppings();
 		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
@@ -241,5 +235,11 @@ $(document).ready(function() {
 	$('#complete-btn').click(() => {
 		$('.finish-order').hide();
 		$('.order').show();
+	});
+
+	//Add Another Pizza
+	$('#add-pizza').click(() => {
+		$('.finish-order').hide();
+		$('.pick-size').show();
 	});
 });
