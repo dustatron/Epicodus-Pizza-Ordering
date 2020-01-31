@@ -7,7 +7,8 @@ function Pizzeria() {
 		pepperoni: 'img/cheese.png',
 		artichoke: 'img/cheese.png',
 		anchovy: 'img/cheese.png',
-		bacon: 'img/cheese.png'
+		bacon: 'img/cheese.png',
+		glass: 'img/cheese.png'
 	};
 	this.pSizes = {
 		large: 18,
@@ -60,11 +61,14 @@ Cart.prototype.addPizza = function(size, toppings) {
 	};
 	this.items.push(pizza);
 	document.currentPizza = pizza.pizzaId - 1;
-	console.log('Pizza created with id = ' + document.currentPizza);
 };
 
-Cart.prototype.addPizzaTopping = function(id, topping) {
-	this.items[id].toppings.push(topping);
+Cart.prototype.addPizzaTopping = function(pizzaId, topping) {
+	var toppingObject = {
+		topping: 'img/cheese.png'
+	};
+	this.items[pizzaId].toppings.push(toppingObject);
+	console.log('added ' + topping);
 };
 
 Cart.prototype.toDeliver = function(option) {
@@ -79,9 +83,44 @@ var pizzeria = new Pizzeria();
 //////// Draw Functions  ////////
 
 function drawToppings() {
-	pizzeria.toppings;
+	const entries = Object.entries(pizzeria.toppings);
+	let printString = '';
+
+	entries.forEach((topping) => {
+		printString +=
+			'<div id="' +
+			topping[0] +
+			'" class="toppings-item"><p>' +
+			topping[0] +
+			'</p><img src="' +
+			topping[1] +
+			'" alt=""></div>';
+	});
+
+	$('.toppings-options').html(printString);
 }
 
+function drawSelectedToppings(currentPie) {
+	const entries = Object.entries(currentPie);
+	var printString = '';
+
+	entries.toppings.forEach((topping) => {
+		console.log(topping);
+		printString +=
+			'<div id="' +
+			topping[0] +
+			'" class="toppings-item"><p>' +
+			topping[0] +
+			'</p><img src="' +
+			topping[1] +
+			'" alt=""></div>';
+	});
+
+	$('.toppings--selected').html(printString);
+}
+
+////////////////////////////////////////
+////////    Document Object    ////////
 $(document).ready(function() {
 	this.currentOrder;
 	this.currentPizza;
@@ -100,10 +139,13 @@ $(document).ready(function() {
 		$('.toppings').show();
 		$('.toppings').attr('id', curPie.id);
 		$('.toppings--pizza-title').text(curPie.size);
+		drawToppings();
 	});
 
 	//toppings items
 	$('.toppings-options').on('click', 'div', function() {
-		console.log(this.id);
+		var curPie = pizzeria.orders[that.currentOrder];
+		curPie.addPizzaTopping(that.currentPizza, this.id);
+		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
 	});
 });
