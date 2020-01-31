@@ -45,21 +45,27 @@ Pizzeria.prototype.getTotalPrice = function(orderId) {
 	var order = this.orders[orderId];
 	var numberOfToppings = 0;
 	var numberOfPies = order.items.length;
+	var deliveryPrice = order.toDeliver;
 
 	order.items.forEach((item) => {
 		item.toppings.forEach((top) => {
 			numberOfToppings += 1;
 		});
 	});
+	var returnObj = {
+		total: this.basePrice * numberOfPies + numberOfToppings * this.toppingPrice + deliveryPrice,
+		pies: numberOfPies,
+		toppings: numberOfToppings
+	};
 
-	return this.basePrice * numberOfPies + numberOfToppings * this.toppingPrice;
+	return returnObj;
 };
 
 //////////////////////////////////
 ////////// Cart Object //////////
 function Cart() {
 	this.items = [];
-	this.toDeliver = false;
+	this.toDeliver = 0;
 	this.total = 0;
 }
 
@@ -135,6 +141,14 @@ function drawSelectedToppings(currentPie) {
 	$('.toppings--selected').html(printString.join(''));
 }
 
+function writeTotal(obj) {
+	var totalObj = pizzeria.getTotalPrice(obj);
+	console.log(totalObj);
+	$('#pizzaNumber').html(totalObj.pies);
+	$('#toppingsNumber').html(totalObj.toppings);
+	$('#totalNumber').text(totalObj.total);
+}
+
 ////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
@@ -171,6 +185,25 @@ $(document).ready(function() {
 	$('#buy-this-pizza').click(() => {
 		$('.toppings').hide();
 		$('.finish-order').show();
-		console.log(pizzeria.getTotalPrice(that.currentOrder));
+
+		writeTotal(that.currentOrder);
+	});
+
+	$('#delivery').click(() => {
+		console.log(pizzeria.orders[that.currentOrder].toDeliver);
+		console.log(pizzeria.orders[that.currentOrder]);
+		var order = pizzeria.orders[that.currentOrder];
+
+		if (order.toDeliver === 0) {
+			order.toDeliver = 5;
+			$('#deliveryNumber').html('Yes');
+			writeTotal(that.currentOrder);
+		} else if (order.toDeliver === 5) {
+			order.toDeliver = 0;
+			$('#deliveryNumber').html('No');
+			writeTotal(that.currentOrder);
+		} else {
+			console.log('ERROR: Delivery Fee issue');
+		}
 	});
 });

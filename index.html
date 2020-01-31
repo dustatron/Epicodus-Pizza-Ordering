@@ -87,7 +87,7 @@
       <!-- right  -->
       <div class="col-md-6 finish-order--total">
         <h4>Your Pizza Total</h4>
-        <button class="btn btn-warning btn-lg text-center">Add Delivery</button>
+        <button id="delivery" class="btn btn-warning btn-lg text-center">Delivery?</button>
         <div class="finish-order--total-box">
           <div class="t-box-top">
             Review Your order
@@ -100,12 +100,12 @@
               number of toppings: <span id="toppingsNumber">1</span>
             </div>
             <div class="t-box-delivery">
-              Delivery yes : <span id="deliveryNumber">5</span>
+              Delivery $5 : <span id="deliveryNumber">no</span>
             </div>
           </div>
           <div class="t-box-bottom">
             <div class="t-box-total">
-              Total : <span id="totalNumber">$20</span>
+              Total : $<span id="totalNumber">20</span>
             </div>
 
             <button class="btn btn-success btn-lg btn-block">Complete Order</button>
