@@ -18,6 +18,7 @@ function Pizzeria() {
 	};
 	this.cartId = 0;
 	this.pizzaId = 0;
+	(this.basePrice = 20), (this.toppingPrice = 3);
 }
 
 Pizzeria.prototype.makeCartId = function() {
@@ -38,6 +39,20 @@ Pizzeria.prototype.find = function(id) {
 			return this.orders[i];
 		}
 	}
+};
+
+Pizzeria.prototype.getTotalPrice = function(orderId) {
+	var order = this.orders[orderId];
+	var numberOfToppings = 0;
+	var numberOfPies = order.items.length;
+
+	order.items.forEach((item) => {
+		item.toppings.forEach((top) => {
+			numberOfToppings += 1;
+		});
+	});
+
+	return this.basePrice * numberOfPies + numberOfToppings * this.toppingPrice;
 };
 
 //////////////////////////////////
@@ -123,6 +138,7 @@ function drawSelectedToppings(currentPie) {
 ////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
+	$('.finish-order').hide();
 	this.currentOrder;
 	this.currentPizza;
 	var that = this;
@@ -141,6 +157,7 @@ $(document).ready(function() {
 		$('.toppings').attr('id', curPie.id);
 		$('.toppings--pizza-title').text(curPie.size);
 		drawToppings();
+		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
 	});
 
 	//toppings items
@@ -148,5 +165,12 @@ $(document).ready(function() {
 		var curPie = pizzeria.orders[that.currentOrder];
 		curPie.addPizzaTopping(that.currentPizza, this.id);
 		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
+	});
+
+	//Buy pizza
+	$('#buy-this-pizza').click(() => {
+		$('.toppings').hide();
+		$('.finish-order').show();
+		console.log(pizzeria.getTotalPrice(that.currentOrder));
 	});
 });
