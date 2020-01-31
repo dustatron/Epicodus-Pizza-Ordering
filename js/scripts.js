@@ -189,6 +189,7 @@ $(document).ready(function() {
 		writeTotal(that.currentOrder);
 	});
 
+	//Delivery Button
 	$('#delivery').click(() => {
 		console.log(pizzeria.orders[that.currentOrder].toDeliver);
 		console.log(pizzeria.orders[that.currentOrder]);
@@ -205,5 +206,11 @@ $(document).ready(function() {
 		} else {
 			console.log('ERROR: Delivery Fee issue');
 		}
+	});
+
+	//Complete Order Button
+	$('#complete-btn').click(() => {
+		$('.finish-order').hide();
+		$('.order').show();
 	});
 });
