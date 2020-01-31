@@ -14,41 +14,131 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/scripts.js"></script>
 
-  <title>McCord's Pizzeria</title>
+  <title>The Robot Pizzeria</title>
 </head>
 
 <body>
   <div class="container">
-    <!-- input form  -->
-    <div class="row">
-      <div class="col-md-6 offset-md-3 box-decore">
-        <h1 class="text-center">McCord's Pizzeria</h1>
-        <form>
-          <div class="form-group">
-            <label for="input-1">Input 1</label>
-            <input type="text" class="form-control" id="input-1" aria-describedby="input">
-            <small id="input1-Help" class="form-text text-muted">You can put your thoughts here.</small>
-          </div>
-          <div class="form-group">
-            <label for="input-2">Input 2</label>
-            <input type="text" class="form-control" id="input-2">
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-1">
-            <label class="form-check-label" for="checkbox-1">Check me out</label>
-          </div>
-          <button id="submitBtn" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-        </form>
+    <h1 class="text-center">The Robot Pizzeria</h1>
+    <h2 class="text-center">All our pizzas are belong to us!</h2>
+    <!-- Select Size -->
+    <div class="pick-size">
+      <div class="row text-center">
+        <h3>What Size Do You Want?</h3>
       </div>
-    </div>
+      <div class="div">
+        <div class="pick-size--pizzas">
+          <div class="pick-size--large pie">
+            <h4>Large</h4>
+            <img src="img/pizza-1.png" alt="">
+          </div>
+          <div class="pick-size--medium pie">
+            <h4>Medium</h4>
+            <img src="img/pizza-1.png" alt="">
+          </div>
+          <div class="pick-size--small pie">
+            <h4>small</h4>
+            <img src="img/pizza-1.png" alt="">
 
-    <!-- output box  -->
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="output">Output here</div>
+          </div>
+          <div class="pick-size--xsmall pie">
+            <h4>Extra Small</h4>
+            <img src="img/pizza-1.png" alt="">
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <!-- Select Topping -->
+    <div class="toppings">
+      <div class="row text-center">
+        <h3>Pick your toppings</h3>
+      </div>
+      <div class="row">
+        <!-- left -->
+        <div class="col-md-6 toppings--pizza">
+          <!-- showing pizza size  -->
+          <div class="row toppings--this-pie">
+            <h4 class="toppings--pizza-title">Large Pizza</h4>
+            <img src="img/pizza-1.png" alt="">
+          </div>
+
+          <!-- showing toppings selected  -->
+          <div class="row toppings--selected">
+            <!-- ============== temp  ======================= -->
+            <div id="1" class="toppings-item">
+              <p>Cheese</p>
+              <img src="img/cheese.png" alt="">
+            </div>
+            <div id="1" class="toppings-item">
+              <p>Cheese</p>
+              <img src="img/cheese.png" alt="">
+            </div>
+            <div id="1" class="toppings-item">
+              <p>Cheese</p>
+              <img src="img/cheese.png" alt="">
+            </div>
+            <div id="1" class="toppings-item">
+              <p>Cheese</p>
+              <img src="img/cheese.png" alt="">
+            </div>
+
+          </div>
+        </div>
+
+        <!-- right -->
+        <div class="col-md-6 toppings-options">
+          <!-- <!-- <h4 class="toppings-title">Selections</h4> -->
+          <!-- items list here -->
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+          <div id="1" class="toppings-item">
+            <p>Cheese</p>
+            <img src="img/cheese.png" alt="">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Select Cart View -->
+    <div class="row finish-order">
+      <!-- left -->
+      <div class="col-md-6 finish-order--pizzas">
+        <h4>Your Pizza Order</h4>
+        <button class="btn btn-danger btn-lg btn-block">Add Another Pizza</button>
+      </div>
+      <!-- right  -->
+      <div class="col-md-6 finish-order--total">
+        <h4>Your Pizza Total</h4>
+        <div class="finish-order--total-box">
+          <div class="t-box-total">
+            Total : $20
+          </div>
+        </div>
+        <button class="btn btn-success btn-lg btn-block">Complete Order</button>
+      </div>
+    </div>
+    <!-- Select Completed Order -->
+
+  </div> <!-- end container-->
 </body>
 
 </html>

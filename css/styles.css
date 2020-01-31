@@ -1,9 +1,141 @@
 .box-decore {
-  margin-top: 55px;
-  padding: 25px;    
-  box-shadow: 1px 1px 15px -4px rgba(0,0,0,.2);
+	margin-top: 55px;
+	padding: 25px;
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
 }
 
 .output {
-  margin-top: 55px;
+	margin-top: 55px;
+}
+
+h3 {
+	margin: auto;
+}
+
+h4 {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+/* ===================================== */
+/* -------------  Pick Size  ---------- */
+/* =================================== */
+
+.pick-size {
+	text-align: center;
+	display: none;
+}
+
+.pie {
+	width: 35%;
+}
+
+.pick-size--pizzas {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.pick-size--large img {
+	max-width: 250px;
+}
+
+.pick-size--medium img {
+	max-width: 200px;
+}
+
+.pick-size--small img {
+	max-width: 150px;
+}
+
+.pick-size--xsmall img {
+	max-width: 100px;
+}
+
+/* ========================================= */
+/* -------------  Pick Toppings  ---------- */
+/* ======================================= */
+
+.toppings {
+	margin-top: 35px;
+	display: none;
+}
+
+/* ---------------- RIGHT SIDE ---------------- */
+.toppings--pizza-title {
+	text-align: center;
+}
+
+.toppings--pizza img {
+	max-width: 300px;
+	margin: auto;
+}
+
+.toppings--this-pie {
+	text-align: center;
+}
+
+.toppings--selected {
+	border: 2px ridge #a3a3a323;
+	box-shadow: 0px 0px 15px 5px #d8d8d846 inset;
+	margin: 5px;
+	padding: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: center;
+}
+
+/* -------------------- LEFT SIDE -------------------- */
+.toppings-title {
+	text-align: center;
+}
+
+.toppings-options {
+	border-left: 5px dashed #a3a3a3;
+	margin-top: 35px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: center;
+}
+
+.toppings-item {
+	text-align: center;
+	font-weight: 700;
+	font-size: 18px;
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+	margin: 5px;
+	padding: 5px;
+}
+
+.toppings-item:hover {
+	background-color: rgba(171, 250, 250, 0.2);
+}
+
+.toppings-item img {
+	text-align: center;
+	max-width: 200px;
+}
+
+/* ========================================= */
+/* -------------  Finish Order  ---------- */
+/* ======================================= */
+
+.finish-order {
+}
+
+/* ---------------- LEFT --------------- */
+.finish-order--pizzas {
+}
+
+/* -------------------- RIGHT -------------- */
+.finish-order--total {
+}
+
+.finish-order--total-box {
+}
+
+.t-box-total {
 }
