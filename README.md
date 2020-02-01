@@ -3,7 +3,7 @@
 #### _A simple web app that allows a user to build a pizza and order it. | Jan 31. 2020_
 
 #### By _**Dusty McCord**_
-[link to demo site coming soon](https://dustatron.github.io/Epicodus-Pizza-Ordering/)
+[link to demo site](https://dustatron.github.io/Epicodus-Pizza-Ordering/)
 
 ## Description
 
