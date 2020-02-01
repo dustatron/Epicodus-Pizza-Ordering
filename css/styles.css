@@ -1,3 +1,7 @@
+body {
+	background-color: rgba(124, 131, 145, 0.2);
+}
+
 h3 {
 	margin: 25px auto;
 	font-weight: lighter;
@@ -14,6 +18,7 @@ h4 {
 	margin-top: 50px;
 	padding: 25px;
 	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+	background-color: white;
 }
 /* ===================================== */
 /* -------------  Pick Size  ---------- */
@@ -138,9 +143,9 @@ h4 {
 /* ---------------- LEFT --------------- */
 .show-pizzas-here {
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-content: center;
+	flex-wrap: wrap-reverse;
+	justify-content: center;
+	/* align-content: center; */
 }
 
 .pizza-order {
@@ -148,17 +153,24 @@ h4 {
 	padding: 5px;
 	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
 	text-align: center;
-	width: 40%;
+	font-weight: 700;
+	text-transform: capitalize;
+	width: 48%;
 	align-content: center;
 	border: 1px solid rgba(150, 149, 149, 0.233);
 	border-radius: 7px;
+}
+
+#add-pizza {
+	margin: 25px auto;
+	width: 50%;
 }
 
 /* -------------------- RIGHT -------------- */
 .finish-order--total {
 	display: flex;
 	flex-flow: column wrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 }
 .btn-warning {
@@ -205,6 +217,9 @@ h4 {
 /* -------------  Finish Order  ---------- */
 /* ======================================= */
 .order {
+	border-top: 5px solid black;
+	width: 80%;
+	margin: 25px auto;
 	display: none;
 }
 .order-done {
