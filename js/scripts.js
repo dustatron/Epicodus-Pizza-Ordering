@@ -156,8 +156,8 @@ function drawSelectedToppings(currentPie) {
 
 function writeTotal() {
 	var totalObj = pizzeria.getTotalPrice(pizzeria.state());
-	$('#pizzaNumber').html(totalObj.pies);
-	$('#toppingsNumber').html(totalObj.toppings);
+	$('#pizzaNumber').html(totalObj.pies + ' = ' + totalObj.pies * pizzeria.basePrice);
+	$('#toppingsNumber').html(totalObj.toppings + ' = ' + totalObj.toppings * pizzeria.toppingPrice);
 	$('#totalNumber').text(totalObj.total);
 }
 
