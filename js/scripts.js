@@ -3,12 +3,12 @@
 function Pizzeria() {
 	this.orders = [];
 	this.toppings = [
-		{ name: 'cheese', img: 'img/cheese.png' },
-		{ name: 'pepperoni', img: 'img/cheese.png' },
-		{ name: 'artichoke', img: 'img/cheese.png' },
-		{ name: 'anchovy', img: 'img/cheese.png' },
-		{ name: 'bacon', img: 'img/cheese.png' },
-		{ name: 'glass', img: 'img/cheese.png' }
+		{ name: 'Cheese', img: 'img/cheese.png' },
+		{ name: 'Pepperoni', img: 'img/pepperoni.jpg' },
+		{ name: 'Artichoke', img: 'img/anchovy.jpeg' },
+		{ name: 'Anchovy', img: 'img/artichoke.jpg' },
+		{ name: 'Bacon', img: 'img/bacon.jpeg' },
+		{ name: 'Olives', img: 'img/olives.jpeg' }
 	];
 	this.pSizes = {
 		large: 18,
@@ -85,18 +85,16 @@ Cart.prototype.addPizza = function(size, toppings) {
 };
 
 Cart.prototype.addPizzaTopping = function(pizzaId, topping) {
-	var toppingObject = {
-		name: topping,
-		img: 'img/cheese.png'
-	};
-	this.items[pizzaId].toppings.push(toppingObject);
+	var toppingObject;
+	for (let i = 0; i < pizzeria.toppings.length; i++) {
+		if (pizzeria.toppings[i].name === topping) {
+			toppingObject = pizzeria.toppings[i];
+		}
+	}
+
+	pizzeria.orders[this.cartId - 1].items[pizzaId].toppings.push(toppingObject);
 	console.log('added ' + topping);
 };
-
-////////////////////////////////////////
-//////// Start Pizzeria Object ////////
-var pizzeria = new Pizzeria();
-var cart = new Cart();
 
 //////////////////////////////////
 //////// Draw Functions  ////////
@@ -175,6 +173,11 @@ function writePizzaOrders(thisOrder) {
 }
 
 ////////////////////////////////////////
+//////// Start Pizzeria Object ////////
+var pizzeria = new Pizzeria();
+var cart = new Cart();
+
+////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
 	$('.finish-order').hide();
@@ -241,5 +244,12 @@ $(document).ready(function() {
 	$('#add-pizza').click(() => {
 		$('.finish-order').hide();
 		$('.pick-size').show();
+	});
+
+	$('#new-order').click(() => {
+		$('.order').hide();
+		$('.pick-size').show();
+		cart = new Cart();
+		pizzeria.pizzaId = 0;
 	});
 });
