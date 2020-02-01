@@ -19,6 +19,8 @@ h4 {
 	padding: 25px;
 	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
 	background-color: white;
+	height: auto;
+	overflow: scroll;
 }
 /* ===================================== */
 /* -------------  Pick Size  ---------- */
@@ -237,4 +239,37 @@ h4 {
 
 .pizza-order img {
 	max-width: 200px;
+}
+
+.order-history {
+	width: 100%;
+}
+.order-history-item {
+	margin: 30px auto;
+	padding: 10px;
+	border: 1px solid rgba(119, 119, 119, 0.329);
+	border-radius: 7px;
+	width: 80%;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-content: center;
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+}
+
+.order-history-left {
+	width: 30%;
+	display: flex;
+	padding-left: 10px;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border-right: 2px dashed black;
+}
+.order-history-right {
+	border-right: 2px dashed black;
+	padding: 15px;
+}
+
+.order-history-item img {
+	max-width: 100px;
 }

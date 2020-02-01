@@ -21,6 +21,10 @@ function Pizzeria() {
 	this.pizzaId = 0;
 	this.basePrice = 20;
 	this.toppingPrice = 3;
+	this.state = function() {
+		var index = this.cartId - 1;
+		return this.orders[index];
+	};
 }
 
 Pizzeria.prototype.makeCartId = function() {
@@ -31,7 +35,7 @@ Pizzeria.prototype.makeCartId = function() {
 Pizzeria.prototype.addToCart = function(cart) {
 	cart.cartId = this.makeCartId();
 	this.orders.push(cart);
-	document.currentOrder = cart.cartId - 1;
+	document.currentOrderIndex = cart.cartId - 1;
 };
 
 Pizzeria.prototype.find = function(id) {
@@ -42,8 +46,8 @@ Pizzeria.prototype.find = function(id) {
 	}
 };
 
-Pizzeria.prototype.getTotalPrice = function(orderId) {
-	var order = this.orders[orderId];
+Pizzeria.prototype.getTotalPrice = function() {
+	var order = this.state();
 	var numberOfToppings = 0;
 	var numberOfPies = order.items.length;
 	var deliveryPrice = order.toDeliver;
@@ -135,16 +139,16 @@ function drawSelectedToppings(currentPie) {
 	$('.toppings--selected').html(printString.join(''));
 }
 
-function writeTotal(obj) {
-	var totalObj = pizzeria.getTotalPrice(obj);
+function writeTotal() {
+	var totalObj = pizzeria.getTotalPrice(pizzeria.state());
 	$('#pizzaNumber').html(totalObj.pies);
 	$('#toppingsNumber').html(totalObj.toppings);
 	$('#totalNumber').text(totalObj.total);
 }
 
-function writePizzaOrders(thisOrder) {
+function writePizzaOrders() {
 	var printArray = [];
-	var order = pizzeria.orders[thisOrder];
+	var order = pizzeria.state();
 	order.items.forEach((item) => {
 		var toppings;
 		if (item.toppings.length <= 1) {
@@ -169,59 +173,81 @@ function writePizzaOrders(thisOrder) {
 	$('.show-pizzas-here').html(printArray.join(''));
 }
 
+function writeOrderHistory() {
+	var printArray = [];
+
+	pizzeria.orders.forEach((order) => {
+		printArray.push(
+			'<div class="order-history-item"> <div class="order-history-left"><img src="img/pizza-1.png"></div>'
+		);
+		order.items.forEach((item) => {
+			printArray.push(
+				'<div class="order-history-right"><h4>' +
+					item.size +
+					'</h4>' +
+					item.toppings.length +
+					'  Toppings </div>'
+			);
+		});
+		printArray.push('</div></div>');
+	});
+
+	$('.order-history').html(printArray.join(''));
+}
+
 ///////////////////////////////////////////
 //////// Start Constructor Object ////////
 var pizzeria = new Pizzeria();
 var cart = new Cart();
+pizzeria.addToCart(cart);
 
 ////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
-	this.currentOrder;
+	this.currentOrderIndex;
 	this.currentPizza;
 	var that = this;
 
 	//Pizza size Listen
 	$('.pick-size--pizzas').on('click', 'div', function(event) {
 		cart.addPizza(this.id, { name: 'cheese', img: 'img/cheese.png' });
-		pizzeria.addToCart(cart);
 
 		//Setting up topping view
-		var curPie = pizzeria.orders[that.currentOrder].items[that.currentPizza];
+		var curPie = pizzeria.state().items[that.currentPizza];
 		$('.pick-size').hide();
 		$('.toppings').show();
 		// $('.toppings').attr('id', curPie.id);
 		$('.toppings--pizza-title').text(curPie.size);
 		drawToppings();
-		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
+		drawSelectedToppings(pizzeria.state().items[that.currentPizza]);
 	});
 
 	//toppings items
 	$('.toppings-options').on('click', 'div', function() {
-		var curPie = pizzeria.orders[that.currentOrder];
+		var curPie = pizzeria.orders[that.currentOrderIndex];
 		curPie.addPizzaTopping(that.currentPizza, this.id);
-		drawSelectedToppings(pizzeria.orders[that.currentOrder].items[that.currentPizza]);
+		drawSelectedToppings(pizzeria.state().items[that.currentPizza]);
 	});
 
 	//Buy pizza
 	$('#buy-this-pizza').click(() => {
 		$('.toppings').hide();
 		$('.finish-order').show();
-		writePizzaOrders(that.currentOrder);
-		writeTotal(that.currentOrder);
+		writePizzaOrders();
+		writeTotal();
 	});
 
 	//Delivery Button
 	$('#delivery').click(() => {
-		var order = pizzeria.orders[that.currentOrder];
+		var order = pizzeria.state();
 		if (order.toDeliver === 0) {
 			order.toDeliver = 5;
 			$('#deliveryNumber').html('Yes');
-			writeTotal(that.currentOrder);
+			writeTotal();
 		} else if (order.toDeliver === 5) {
 			order.toDeliver = 0;
 			$('#deliveryNumber').html('No');
-			writeTotal(that.currentOrder);
+			writeTotal();
 		} else {
 			console.log('ERROR: Delivery Fee issue');
 		}
@@ -231,6 +257,7 @@ $(document).ready(function() {
 	$('#complete-btn').click(() => {
 		$('.finish-order').hide();
 		$('.order').show();
+		writeOrderHistory();
 	});
 
 	//Add Another Pizza
@@ -243,6 +270,7 @@ $(document).ready(function() {
 		$('.order').hide();
 		$('.pick-size').show();
 		cart = new Cart();
+		pizzeria.addToCart(cart);
 		pizzeria.pizzaId = 0;
 	});
 });
