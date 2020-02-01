@@ -94,9 +94,9 @@ h4 {
 	margin: 5px;
 	padding: 5px;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: wrap-reverse;
 	align-items: baseline;
-	justify-content: flex-start;
+	justify-content: center;
 }
 
 /* -------------------- LEFT SIDE -------------------- */
@@ -115,6 +115,7 @@ h4 {
 }
 
 .toppings-item {
+	position: relative;
 	text-align: center;
 	font-weight: 700;
 	font-size: 18px;
@@ -122,6 +123,20 @@ h4 {
 	margin: 5px;
 	padding: 5px;
 	height: 250px;
+}
+
+.trash {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+	transform: scale(.7);
+	transition: all .2s;
+}
+
+.trash:hover {
+	filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+	transform: scale(.9);
 }
 
 .toppings-item:hover {

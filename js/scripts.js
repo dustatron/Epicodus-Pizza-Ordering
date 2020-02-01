@@ -4,7 +4,7 @@ function Pizzeria() {
 	this.orders = [];
 	//Master Toppings data
 	this.toppings = [
-		{ name: 'Cheese', img: 'img/cheese.png' },
+		{ name: 'Cheese', img: 'img/cheese-2.jpg' },
 		{ name: 'Pepperoni', img: 'img/pepperoni.jpg' },
 		{ name: 'Artichoke', img: 'img/anchovy.jpeg' },
 		{ name: 'Anchovy', img: 'img/artichoke.jpg' },
@@ -100,6 +100,19 @@ Cart.prototype.addPizzaTopping = function(pizzaId, topping) {
 	pizzeria.orders[this.cartId - 1].items[pizzaId].toppings.push(toppingObject);
 };
 
+Cart.prototype.deleteTopping = function(id) {
+	var toppingsArr = pizzeria.state().items[pizzeria.pizzaId - 1].toppings;
+	for (let i = 0; i < toppingsArr.length; i++) {
+		if (toppingsArr[i]) {
+			if (i == id) {
+				toppingsArr.splice(i, 1);
+				return true;
+			}
+		}
+	}
+	return false;
+};
+
 //////////////////////////////////
 //////// Draw Functions  ////////
 
@@ -124,7 +137,7 @@ function drawToppings() {
 function drawSelectedToppings(currentPie) {
 	var printString = [];
 
-	currentPie.toppings.forEach((topping) => {
+	currentPie.toppings.forEach((topping, index) => {
 		printString.push(
 			'<div id="' +
 				topping.name +
@@ -132,7 +145,9 @@ function drawSelectedToppings(currentPie) {
 				topping.name +
 				'</p><img src="' +
 				topping.img +
-				'" alt=""></div>'
+				'" alt=""> <img id="' +
+				index +
+				'" class="trash" src="img/trash-can.svg"></div>'
 		);
 	});
 
@@ -210,9 +225,9 @@ $(document).ready(function() {
 
 	//Pizza size Listen
 	$('.pick-size--pizzas').on('click', 'div', function(event) {
-		cart.addPizza(this.id, { name: 'cheese', img: 'img/cheese.png' });
+		cart.addPizza(this.id, pizzeria.toppings[0]);
 
-		//Setting up topping view
+		//Setting up toppings view
 		var curPie = pizzeria.state().items[that.currentPizza];
 		$('.pick-size').hide();
 		$('.toppings').show();
@@ -226,6 +241,11 @@ $(document).ready(function() {
 	$('.toppings-options').on('click', 'div', function() {
 		var curPie = pizzeria.orders[that.currentOrderIndex];
 		curPie.addPizzaTopping(that.currentPizza, this.id);
+		drawSelectedToppings(pizzeria.state().items[that.currentPizza]);
+	});
+
+	$('.toppings--selected').on('click', '.trash', function() {
+		pizzeria.state().deleteTopping(this.id);
 		drawSelectedToppings(pizzeria.state().items[that.currentPizza]);
 	});
 
