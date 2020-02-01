@@ -1,15 +1,7 @@
-.box-decore {
-	margin-top: 55px;
-	padding: 25px;
-	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
-}
-
-.output {
-	margin-top: 55px;
-}
-
 h3 {
-	margin: auto;
+	margin: 25px auto;
+	font-weight: lighter;
+	font-size: 40px;
 }
 
 h4 {
@@ -17,13 +9,25 @@ h4 {
 	text-align: center;
 	width: 100%;
 }
+
+.container {
+	margin-top: 50px;
+	padding: 25px;
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+}
 /* ===================================== */
 /* -------------  Pick Size  ---------- */
 /* =================================== */
 
 .pick-size {
 	text-align: center;
-	/* display: none; */
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+
+	width: 80%;
+	margin: 50px auto;
+	padding: 20px;
+
+	border-top: 5px solid black;
 }
 
 .pie {
@@ -60,6 +64,7 @@ h4 {
 .toppings {
 	margin-top: 35px;
 	display: none;
+	border-top: 5px solid black;
 }
 
 /* ---------------- RIGHT SIDE ---------------- */
@@ -84,7 +89,7 @@ h4 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
 /* -------------------- LEFT SIDE -------------------- */
@@ -98,6 +103,7 @@ h4 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
+	align-content: flex-start;
 	justify-content: center;
 }
 
@@ -108,6 +114,7 @@ h4 {
 	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
 	margin: 5px;
 	padding: 5px;
+	height: 250px;
 }
 
 .toppings-item:hover {
@@ -123,19 +130,40 @@ h4 {
 /* -------------  Finish Order  ---------- */
 /* ======================================= */
 
-/* .finish-order {
+.finish-order {
+	border-top: 5px solid black;
 	display: none;
-} */
+}
 
 /* ---------------- LEFT --------------- */
-.finish-order--pizzas {
+.show-pizzas-here {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: center;
+}
+
+.pizza-order {
+	margin: 5px 0px 5px 10px;
+	padding: 5px;
+	box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
+	text-align: center;
+	width: 40%;
+	align-content: center;
+	border: 1px solid rgba(150, 149, 149, 0.233);
+	border-radius: 7px;
 }
 
 /* -------------------- RIGHT -------------- */
-.btn-warning {
-	margin: 0 36%;
-}
 .finish-order--total {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+.btn-warning {
+	/* margin: 0 36%; */
+	width: 50%;
 }
 .finish-order--total-box {
 	width: 50%;

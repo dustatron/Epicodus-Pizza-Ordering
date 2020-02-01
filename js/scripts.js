@@ -2,6 +2,7 @@
 //////// Pizzeria Object ////////
 function Pizzeria() {
 	this.orders = [];
+	//Master Toppings data
 	this.toppings = [
 		{ name: 'Cheese', img: 'img/cheese.png' },
 		{ name: 'Pepperoni', img: 'img/pepperoni.jpg' },
@@ -18,7 +19,8 @@ function Pizzeria() {
 	};
 	this.cartId = 0;
 	this.pizzaId = 0;
-	(this.basePrice = 20), (this.toppingPrice = 3);
+	this.basePrice = 20;
+	this.toppingPrice = 3;
 }
 
 Pizzeria.prototype.makeCartId = function() {
@@ -30,7 +32,6 @@ Pizzeria.prototype.addToCart = function(cart) {
 	cart.cartId = this.makeCartId();
 	this.orders.push(cart);
 	document.currentOrder = cart.cartId - 1;
-	console.log('cart added to pizzeria with card it = ' + document.currentOrder);
 };
 
 Pizzeria.prototype.find = function(id) {
@@ -93,7 +94,6 @@ Cart.prototype.addPizzaTopping = function(pizzaId, topping) {
 	}
 
 	pizzeria.orders[this.cartId - 1].items[pizzaId].toppings.push(toppingObject);
-	console.log('added ' + topping);
 };
 
 //////////////////////////////////
@@ -119,7 +119,6 @@ function drawToppings() {
 
 function drawSelectedToppings(currentPie) {
 	var printString = [];
-	console.log(currentPie);
 
 	currentPie.toppings.forEach((topping) => {
 		printString.push(
@@ -138,7 +137,6 @@ function drawSelectedToppings(currentPie) {
 
 function writeTotal(obj) {
 	var totalObj = pizzeria.getTotalPrice(obj);
-	console.log(totalObj);
 	$('#pizzaNumber').html(totalObj.pies);
 	$('#toppingsNumber').html(totalObj.toppings);
 	$('#totalNumber').text(totalObj.total);
@@ -157,7 +155,7 @@ function writePizzaOrders(thisOrder) {
 		printArray.push(
 			'<div class="pizza-order">' +
 				'<img src="img/pizza-1.png">' +
-				'<p> One' +
+				'<p> 1' +
 				' ' +
 				item.size +
 				' ' +
@@ -166,21 +164,19 @@ function writePizzaOrders(thisOrder) {
 				toppings +
 				'</div>'
 		);
-		console.log(item);
 	});
 
 	$('.show-pizzas-here').html(printArray.join(''));
 }
 
-////////////////////////////////////////
-//////// Start Pizzeria Object ////////
+///////////////////////////////////////////
+//////// Start Constructor Object ////////
 var pizzeria = new Pizzeria();
 var cart = new Cart();
 
 ////////////////////////////////////////
 ////////    Document Object    ////////
 $(document).ready(function() {
-	$('.finish-order').hide();
 	this.currentOrder;
 	this.currentPizza;
 	var that = this;
@@ -217,10 +213,7 @@ $(document).ready(function() {
 
 	//Delivery Button
 	$('#delivery').click(() => {
-		console.log(pizzeria.orders[that.currentOrder].toDeliver);
-		console.log(pizzeria.orders[that.currentOrder]);
 		var order = pizzeria.orders[that.currentOrder];
-
 		if (order.toDeliver === 0) {
 			order.toDeliver = 5;
 			$('#deliveryNumber').html('Yes');
