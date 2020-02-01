@@ -19,9 +19,11 @@
 
 <body>
   <div class="container">
+    <!-- ----------------- Page Title Section ----------------- -->
     <h1 class="text-center">Robo Pizzeria</h1>
     <h2 class="text-center">All your pizza are belong to us!</h2>
-    <!-- Select Size -->
+
+    <!-- ----------------- Select Pizza Size Section ----------------- -->
     <div class="pick-size">
       <div class="row text-center">
         <h3>What Size Pizza Do You Want?</h3>
@@ -47,7 +49,7 @@
         </div>
       </div>
     </div>
-    <!-- Select Topping -->
+    <!-- ----------------- Select Toppings Section ----------------- -->
     <div class="toppings">
       <div class="row text-center">
         <h3>Pick your toppings</h3>
@@ -61,23 +63,19 @@
             <img src="img/pizza-1.png" alt="">
           </div>
           <button id="buy-this-pizza" class="btn btn-primary btn-block">Buy This Pizza</button>
-
           <!-- showing toppings selected  -->
           <div class="row toppings--selected">
-            <!-- ============== Toppings on pizza will print here  ======================= -->
+            <!-- ============== Selected Toppings Will Print Here  ======================= -->
 
           </div>
         </div>
-
         <!-- right -->
         <div class="col-md-6 toppings-options">
-          <!-- items list here -->
-
+          <!-- ============== Toppings Options Will Print Here  ======================= -->
         </div>
       </div>
-
     </div>
-    <!-- Select Cart View -->
+    <!-- ----------------- Veiw Shopping Cart Section ----------------- -->
     <div class="finish-order">
       <div class="row">
         <h3>Your Pizza Order</h3>
@@ -89,7 +87,6 @@
           <div class="show-pizzas-here">
             <!-- this is where the pizzas will print out  -->
           </div>
-
         </div>
         <!-- right  -->
         <div class="col-md-6 finish-order--total">
@@ -113,25 +110,21 @@
               <div class="t-box-total">
                 Total : $<span id="totalNumber">20</span>
               </div>
-
               <button id="complete-btn" class="btn btn-success btn-lg btn-block">Complete Order</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Select Completed Order -->
+    <!-- ----------------- Completed Order Section ----------------- -->
     <div class="row order">
       <div class="order-done">
-
         <div class="order-done-box">
           <h3>Your Order Has Been Sent To The Robot Pizza Makers.</h3>
           <button id="new-order" class="btn btn-info">Create A New Order</button>
         </div>
       </div>
-
     </div>
-
   </div> <!-- end container-->
 </body>
 
